@@ -52,7 +52,7 @@ describe 'w_percona::default' do
       end
 
       it 'installs percona cluster package' do
-        expect(chef_run).to install_package('percona-xtradb-cluster-56')
+        expect(chef_run).to install_package('percona-xtradb-cluster-56').with(options: '--force-yes')
         expect(package_cluster).to notify('service[mysql]').to(:stop).immediately
       end
 
